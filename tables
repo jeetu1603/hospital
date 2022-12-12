@@ -1,0 +1,25 @@
+CREATE TABLE Hospitals (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Psychiatrists (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  hospital_id INT NOT NULL,
+  FOREIGN KEY (hospital_id) REFERENCES Hospitals(id)
+);
+
+CREATE TABLE Patients (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  patient_photo BLOB,
+  psychiatrist_id INT NOT NULL,
+  FOREIGN KEY (psychiatrist_id) REFERENCES Psychiatrists(id)
+);
+
+
